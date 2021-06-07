@@ -9,6 +9,10 @@ root_node = Node("root_value")
 left_node = Node("left_value")
 right_node = Node("right_value")
 
+leaf_node = Node("Extreme node.")
+
+left_node.add_child(leaf_node)
+
 root_node.add_child(left_node)
 root_node.add_child(right_node)
 

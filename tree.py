@@ -25,6 +25,7 @@ class Tree:
                         raise Node.NodeValueError(message)
                     level_val[level_count].append(child.value)
                 parent = parent.child[0]
+                level_count += 1
             else:
                 break
         return_string = 'TREE : \n'
