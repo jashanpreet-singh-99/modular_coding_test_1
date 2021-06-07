@@ -12,5 +12,7 @@ right_node = Node("right_value")
 root_node.add_child(left_node)
 root_node.add_child(right_node)
 
+root_node.add_child("lolwa")
+
 t = Tree(root_node)
 print(t)
