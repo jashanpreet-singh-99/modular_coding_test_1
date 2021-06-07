@@ -1,5 +1,12 @@
+from node import Node
+
+
 class Tree:
     def __init__(self, root):
+        if not isinstance(root, Node):
+            message = f"Variable : root({type(root)}) -> is not of"\
+                    " type Node."
+            raise Node.NodeValueError(message)
         self.root = root
 
     def __str__(self):
@@ -12,6 +19,10 @@ class Tree:
                 for child in parent.child:
                     if level_count not in level_val.keys():
                         level_val[level_count] = []
+                    if not isinstance(child, Node):
+                        message = f"Variable : child({type(child)}) of parent"\
+                                f" : {parent.value} -> is not of type Node."
+                        raise Node.NodeValueError(message)
                     level_val[level_count].append(child.value)
                 parent = parent.child[0]
             else:
