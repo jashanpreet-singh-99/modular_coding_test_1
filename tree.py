@@ -1,14 +1,22 @@
 class Tree:
     def __init__(self, root):
         self.root = root
-        self.children = {}
 
     def __str__(self):
-        return f'Root -> {self.root}'
-
-    def add_child(self, parent, child):
-        if self.root not in self.children.keys() or \
-                len(self.children[parent]) == 0:
-            self.children[parent] = [child]
-        else:
-            self.children[parent].append(child)
+        level_val = {}
+        level_val[0] = self.root.value
+        level_count = 1
+        parent = self.root
+        while True:
+            if len(parent.child) > 0:
+                for child in parent.child:
+                    if level_count not in level_val.keys():
+                        level_val[level_count] = []
+                    level_val[level_count].append(child.value)
+                parent = parent.child[0]
+            else:
+                break
+        return_string = 'TREE : \n'
+        for k, v in level_val.items():
+            return_string += f' {k} : {level_val[k]}\n'
+        return return_string

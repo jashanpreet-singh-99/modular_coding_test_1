@@ -1,19 +1,16 @@
 import os
 from tree import Tree
+from node import Node
 
 PATH_SRC = os.path.join(os.getcwd(), "src")
 PATH_OUT = os.path.join(os.getcwd(), "out")
 
-# Compare files
+root_node = Node("root_value")
+left_node = Node("left_value")
+right_node = Node("right_value")
 
+root_node.add_child(left_node)
+root_node.add_child(right_node)
 
-def compare_files():
-    missing_files = []
-    extra_files = []
-
-
-directory_tree = Tree("root_node")
-directory_tree.add_child(directory_tree.root, "node_L")
-directory_tree.add_child(directory_tree.root, "node_M")
-directory_tree.add_child(directory_tree.root, "node_R")
-print(directory_tree)
+t = Tree(root_node)
+print(t)
