@@ -24,6 +24,7 @@ class Node:
             raise NodeValueError(message)
         child.set_root(self)
         self.child.append(child)
+        return child
 
     def update_child(self, index, child):
         if not isinstance(child, Node):

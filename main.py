@@ -26,14 +26,19 @@ t = Tree(root_node)
 print(t)
 
 
-def print_files(path):
+def print_files(path, node):
     for files in os.listdir(path):
-        print(files)
+        file_node = Node(files)
+        file_node = node.add_child(file_node)
         new_path = os.path.join(path, files)
         if os.path.isdir(new_path):
             if files[0] == '.':
                 continue
-            print_files(new_path)
+            print_files(new_path, file_node)
 
 
-print_files(PATH_SRC)
+# print_files(PATH_SRC)
+
+directory_tree = Tree("SRC")
+print_files(PATH_SRC, directory_tree.root)
+print(directory_tree)

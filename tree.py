@@ -2,12 +2,17 @@ from node import Node
 
 
 class Tree:
-    def __init__(self, root):
-        if not isinstance(root, Node):
+    def __init__(self, root=None):
+        if isinstance(root, Node):
+            self.root = root
+        elif isinstance(root, str):
+            self.root = Node(root)
+        elif root is None:
+            self.root = Node(None)
+        else:
             message = f"Variable : root({type(root)}) -> is not of"\
                     " type Node."
             raise Node.NodeValueError(message)
-        self.root = root
 
     def __str__(self):
         level_val = {}
@@ -44,3 +49,6 @@ class Tree:
         for k, v in level_val.items():
             return_string += f' {k} : {level_val[k]}\n'
         return return_string
+
+    def get_root(self):
+        return self.root
