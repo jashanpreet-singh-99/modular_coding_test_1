@@ -32,9 +32,8 @@ def print_files(path, node):
         file_node = node.add_child(file_node)
         new_path = os.path.join(path, files)
         if os.path.isdir(new_path):
-            if files[0] == '.':
-                continue
-            print_files(new_path, file_node)
+            if files[0] != '.':
+                print_files(new_path, file_node)
 
 
 # print_files(PATH_SRC)
@@ -42,3 +41,4 @@ def print_files(path, node):
 directory_tree = Tree("SRC")
 print_files(PATH_SRC, directory_tree.root)
 print(directory_tree)
+print("Levels : ", directory_tree.get_levels())
