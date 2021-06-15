@@ -5,32 +5,13 @@ from node import Node
 PATH_SRC = os.path.join(os.getcwd(), "src")
 PATH_OUT = os.path.join(os.getcwd(), "out")
 
-root_node = Node("root_value")
-left_node = Node("left_value")
-right_node = Node("right_value")
 
-leaf_node_left = Node("Extreme left node.")
-leaf_node_l_right = Node("Extreme left_left node.")
-leaf_node_r_right = Node("Extreme left_right node.")
-
-leaf_node_left.add_child(leaf_node_l_right)
-leaf_node_left.add_child(leaf_node_r_right)
-
-
-right_node.add_child(leaf_node_left)
-
-root_node.add_child(left_node)
-root_node.add_child(right_node)
-
-t = Tree(root_node)
-print(t)
-
-
-def print_files(path, node):
+def print_files(path, parent_node):
     for files in os.listdir(path):
-        file_node = Node(files)
-        file_node = node.add_child(file_node)
         new_path = os.path.join(path, files)
+        file_node = Node(files)
+        file_node = parent_node.add_child(file_node)
+        print(files, os.path.isdir(new_path))
         if os.path.isdir(new_path):
             if files[0] != '.':
                 print_files(new_path, file_node)
@@ -38,7 +19,26 @@ def print_files(path, node):
 
 # print_files(PATH_SRC)
 
-directory_tree = Tree("SRC")
-print_files(PATH_SRC, directory_tree.root)
-print(directory_tree)
-print("Levels : ", directory_tree.get_levels())
+# directory_tree = Tree("SRC")
+# print_files(PATH_SRC, directory_tree.root)
+# print(directory_tree)
+# print("Levels : ", directory_tree.get_levels())
+
+
+child_count = 0
+
+
+def test_tree(tree_node):
+    global child_count
+    child = Node("child " + str(child_count))
+    child_count += 1
+    child = tree_node.add_child(child)
+    if child_count != 5 and (child_count % 2) != 0:
+        test_tree(child)
+    elif (child_count % 2) == 0 and child_count != 5:
+        test_tree(tree_node)
+
+
+struct_tree = Tree("src")
+test_tree(struct_tree.root)
+print(struct_tree)
