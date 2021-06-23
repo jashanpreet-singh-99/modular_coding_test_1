@@ -66,8 +66,5 @@ class Tree:
         else:
             return 1
 
-    def get_node_at(self, level, child):
-        pass
-
     def get_root(self):
         return self.root
