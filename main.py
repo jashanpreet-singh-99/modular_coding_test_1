@@ -25,3 +25,16 @@ def path_to_tree(path, node):
 
 path_to_tree(PATH_SRC, root)
 print(Tree(root))
+
+
+def print_node(n_node):
+    if len(n_node.child) > 0:
+        val = [x.value for x in n_node.child]
+        print(val)
+        for child in n_node.child:
+            print_node(child)
+
+
+# Print tree
+print(root.value)
+print_node(root)
