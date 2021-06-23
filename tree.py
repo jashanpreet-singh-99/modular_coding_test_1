@@ -60,5 +60,14 @@ class Tree:
         else:
             return -1
 
+    def get_child_count(self, level=0):
+        if level != 0:
+            return len(self.level_val[level])
+        else:
+            return 1
+
+    def get_node_at(self, level, child):
+        pass
+
     def get_root(self):
         return self.root
