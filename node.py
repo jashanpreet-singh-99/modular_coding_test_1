@@ -7,6 +7,11 @@ class Node:
         self.root = None
         self.child = []
 
+    def __str__(self):
+        if len(self.value) > 10:
+            return '[ ' + self.value[:10] + '.. ]'
+        return '[ ' + self.value + ' ]'
+
     def set_root(self, root):
         if not isinstance(root, Node):
             message = f"Variable : root({type(root)}) -> is not of"\
