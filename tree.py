@@ -73,8 +73,11 @@ class Tree:
     def __str__(self):
         self.update_tree()
         return_string = 'TREE : \n'
-        return_string += self.tree_data['L0'] + ' \n'
         for k, v in self.tree_data.items():
+            if v[2] == '.':
+                continue
+            level = len(k.split('_')) - 1
+            return_string += '  ' * level + v + '\n'
             continue
         return return_string
 
