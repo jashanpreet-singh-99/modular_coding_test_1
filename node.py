@@ -2,14 +2,16 @@ from exceptions import NodeValueError
 
 
 class Node:
-    def __init__(self, value):
+    def __init__(self, value, char_limit=0):
         self.value = value
         self.root = None
         self.child = []
+        self.char_limit = char_limit
 
     def __str__(self):
-        if len(self.value) > 10:
-            return '[ ' + self.value[:10] + '.. ]'
+        if self.char_limit > 0:
+            if len(self.value) > self.char_limit:
+                return '[ ' + self.value[:self.char_limit] + '.. ]'
         return '[ ' + self.value + ' ]'
 
     def set_root(self, root):
