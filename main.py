@@ -26,3 +26,7 @@ out_root = Node('out')
 path_to_tree(PATH_OUT, out_root)
 out_tree = Tree(out_root)
 print(out_tree)
+
+print(out_root.get_path())
+
+print(src_tree.get_child_at(2, 2))
