@@ -51,3 +51,10 @@ class Node:
             raise NodeValueError(message)
         index = self.child.index(old_child)
         self.update_child(index, new_child)
+
+    def get_path(self):
+        return_string = ' \\'
+        if self.root != None:
+            return_string += self.get_path(self.root)
+        else:
+            return return_string
