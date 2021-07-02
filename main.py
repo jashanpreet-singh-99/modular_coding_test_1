@@ -5,9 +5,6 @@ from node import Node
 PATH_SRC = os.path.join(os.getcwd(), "src")
 PATH_OUT = os.path.join(os.getcwd(), "out")
 
-root = Node("src")
-
-
 def path_to_tree(path, node):
     if os.path.isdir(path):
         dir_list = os.listdir(path)
@@ -19,22 +16,13 @@ def path_to_tree(path, node):
             child_path = os.path.join(path, dir)
             if os.path.isdir(child_path):
                 path_to_tree(child_path, child_node)
-            else:
-                print(dir)
 
+src_root = Node("src")
+path_to_tree(PATH_SRC, src_root)
+src_tree = Tree(src_root)
+print(src_tree)
 
-path_to_tree(PATH_SRC, root)
-print(Tree(root))
-
-
-def print_node(n_node):
-    if len(n_node.child) > 0:
-        val = [x.value for x in n_node.child]
-        print(val)
-        for child in n_node.child:
-            print_node(child)
-
-
-# Print tree
-print(root.value)
-print_node(root)
+out_root = Node('out')
+path_to_tree(PATH_OUT, out_root)
+out_tree = Tree(out_root)
+print(out_tree)
