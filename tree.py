@@ -59,3 +59,13 @@ class Tree:
 
     def get_root(self):
         return self.root
+
+    def get_child_at(self, level, child_count):
+        self.update_tree()
+        for k, v in self.tree_data.items():
+            cur_level = len(k.split('_')) - 1
+            if cur_level != level:
+                continue
+            else:
+                if k[-len(str(child_count)):] == str(child_count):
+                    return v
